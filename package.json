@@ -1,4 +1,13 @@
 {
+  "name": "koa-browser",
+  "version": "0.0.1",
+  "description": "This allows you to run Koa in the browser.",
+  "repository": {
+    "url": "git+ssh://git@github.com/mattduffield/koa-browser.git",
+    "type": "git"
+  },
+  "author": "Matt Duffield <matt.duffield@gmail.com> (https://frontendcreator.com/)",
+  "license": "MIT",
   "devDependencies": {
     "puppeteer": "^1.1.1",
     "tape": "^4.9.0",
