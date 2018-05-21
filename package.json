@@ -19,9 +19,9 @@
     "build-test": "webpack"
   },
   "dependencies": {
-    "content-type": "^1.0.4",
-    "delegates": "^1.0.0",
-    "koa-compose": "^4.0.0",
-    "statuses": "^1.4.0"
+    "content-type": "1.0.4",
+    "delegates": "1.0.0",
+    "koa-compose": "4.0.0",
+    "statuses": "1.4.0"    
   }
 }
