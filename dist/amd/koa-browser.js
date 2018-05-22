@@ -65,26 +65,14 @@ define("koa-browser", [], function() { return /******/ (function(modules) { // w
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.KoaApp = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _koaCompose = __webpack_require__(1);
-
-var _koaCompose2 = _interopRequireDefault(_koaCompose);
-
-var _koaContext = __webpack_require__(2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "KoaApp", function() { return KoaApp; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_koa_compose__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_koa_compose___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_koa_compose__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__koa_context_js__ = __webpack_require__(2);
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -93,7 +81,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var KoaApp = exports.KoaApp = function () {
+
+
+
+var KoaApp = function () {
   function KoaApp() {
     _classCallCheck(this, KoaApp);
 
@@ -104,54 +95,50 @@ var KoaApp = exports.KoaApp = function () {
       function _class() {
         _classCallCheck(this, _class);
 
-        return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+        return _possibleConstructorReturn(this, _KoaContext.apply(this, arguments));
       }
 
       return _class;
-    }(_koaContext.KoaContext);
+    }(__WEBPACK_IMPORTED_MODULE_1__koa_context_js__["a" /* KoaContext */]);
     this.ctx = this.ContextClass.prototype;
   }
 
-  _createClass(KoaApp, [{
-    key: 'use',
-    value: function use(fn) {
-      this.middleware.push(fn);
-    }
-  }, {
-    key: 'handler',
-    value: function handler() {
-      var _this2 = this;
+  KoaApp.prototype.use = function use(fn) {
+    this.middleware.push(fn);
+  };
 
-      var fn = (0, _koaCompose2.default)(this.middleware);
+  KoaApp.prototype.handler = function handler() {
+    var _this2 = this;
 
-      return function () {
-        var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req) {
-          var ctx;
-          return regeneratorRuntime.wrap(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  ctx = new _this2.ContextClass(_this2, req);
-                  _context.next = 3;
-                  return fn(ctx);
+    var fn = __WEBPACK_IMPORTED_MODULE_0_koa_compose___default()(this.middleware);
 
-                case 3:
-                  return _context.abrupt('return', ctx.response.finalize());
+    return function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req) {
+        var ctx;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                ctx = new _this2.ContextClass(_this2, req);
+                _context.next = 3;
+                return fn(ctx);
 
-                case 4:
-                case 'end':
-                  return _context.stop();
-              }
+              case 3:
+                return _context.abrupt('return', ctx.response.finalize());
+
+              case 4:
+              case 'end':
+                return _context.stop();
             }
-          }, _callee, _this2);
-        }));
+          }
+        }, _callee, _this2);
+      }));
 
-        return function (_x) {
-          return _ref.apply(this, arguments);
-        };
-      }();
-    }
-  }]);
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }();
+  };
 
   return KoaApp;
 }();
@@ -215,47 +202,37 @@ function compose (middleware) {
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.KoaContext = undefined;
-
-var _delegates = __webpack_require__(3);
-
-var _delegates2 = _interopRequireDefault(_delegates);
-
-var _koaRequest = __webpack_require__(4);
-
-var _koaResponse = __webpack_require__(6);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return KoaContext; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_delegates__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_delegates___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_delegates__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__koa_request_js__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__koa_response_js__ = __webpack_require__(6);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var KoaContext = exports.KoaContext = function KoaContext(app, req) {
+
+
+
+
+var KoaContext = function KoaContext(app, req) {
   _classCallCheck(this, KoaContext);
 
   this.app = app;
-  this.request = new _koaRequest.KoaRequest(this, req);
-  this.response = new _koaResponse.KoaResponse(this);
+  this.request = new __WEBPACK_IMPORTED_MODULE_1__koa_request_js__["a" /* KoaRequest */](this, req);
+  this.response = new __WEBPACK_IMPORTED_MODULE_2__koa_response_js__["a" /* KoaResponse */](this);
 };
 
 /**
  * Response delegation.
  */
-
-
-(0, _delegates2.default)(KoaContext.prototype, 'response').method('attachment').method('redirect').method('remove').method('vary').method('set').method('append').method('flushHeaders').access('status').access('message').access('body').access('length').access('type').access('lastModified').access('etag').getter('headerSent').getter('writable');
+__WEBPACK_IMPORTED_MODULE_0_delegates___default()(KoaContext.prototype, 'response').method('attachment').method('redirect').method('remove').method('vary').method('set').method('append').method('flushHeaders').access('status').access('message').access('body').access('length').access('type').access('lastModified').access('etag').getter('headerSent').getter('writable');
 
 /**
  * Request delegation.
  */
-(0, _delegates2.default)(KoaContext.prototype, 'request').method('acceptsLanguages').method('acceptsEncodings').method('acceptsCharsets').method('accepts').method('get').method('is').access('querystring').access('idempotent').access('socket').access('search').access('method').access('query').access('path').access('url').getter('origin').getter('href').getter('subdomains').getter('protocol').getter('host').getter('hostname').getter('URL').getter('header').getter('headers').getter('secure').getter('stale').getter('fresh').getter('ips').getter('ip');
+__WEBPACK_IMPORTED_MODULE_0_delegates___default()(KoaContext.prototype, 'request').method('acceptsLanguages').method('acceptsEncodings').method('acceptsCharsets').method('accepts').method('get').method('is').access('querystring').access('idempotent').access('socket').access('search').access('method').access('query').access('path').access('url').getter('origin').getter('href').getter('subdomains').getter('protocol').getter('host').getter('hostname').getter('URL').getter('header').getter('headers').getter('secure').getter('stale').getter('fresh').getter('ips').getter('ip');
 
 /***/ }),
 /* 3 */
@@ -386,27 +363,19 @@ Delegator.prototype.fluent = function (name) {
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.KoaRequest = undefined;
-
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return KoaRequest; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_content_type__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_content_type___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_content_type__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _contentType = __webpack_require__(5);
-
-var _contentType2 = _interopRequireDefault(_contentType);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var KoaRequest = exports.KoaRequest = function () {
+
+
+var KoaRequest = function () {
   function KoaRequest(ctx, req) {
     _classCallCheck(this, KoaRequest);
 
@@ -417,19 +386,18 @@ var KoaRequest = exports.KoaRequest = function () {
     this._querycache = {};
   }
 
-  _createClass(KoaRequest, [{
-    key: 'get',
-    value: function get(field) {
-      var headers = this._headers;
+  KoaRequest.prototype.get = function get(field) {
+    var headers = this._headers;
 
-      switch (field = field.toLowerCase()) {
-        case 'referrer':
-          return headers.get('referer');
-        default:
-          return headers.get(field);
-      }
+    switch (field = field.toLowerCase()) {
+      case 'referrer':
+        return headers.get('referer');
+      default:
+        return headers.get(field);
     }
-  }, {
+  };
+
+  _createClass(KoaRequest, [{
     key: 'URL',
     get: function get() {
       return this._url;
@@ -485,31 +453,22 @@ var KoaRequest = exports.KoaRequest = function () {
 
       obj = this._querycache[qs] = {};
 
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
+      for (var _iterator = this._url.searchParams, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+        var _ref;
 
-      try {
-        for (var _iterator = this._url.searchParams[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var pair = _step.value;
+        if (_isArray) {
+          if (_i >= _iterator.length) break;
+          _ref = _iterator[_i++];
+        } else {
+          _i = _iterator.next();
+          if (_i.done) break;
+          _ref = _i.value;
+        }
 
-          obj[pair[0]] = pair[1];
-        }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return) {
-            _iterator.return();
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
-        }
+        var pair = _ref;
+
+        obj[pair[0]] = pair[1];
       }
-
       return Object.freeze(obj);
     },
     set: function set(obj) {
@@ -569,7 +528,7 @@ var KoaRequest = exports.KoaRequest = function () {
       if (!type) return '';
 
       try {
-        type = _contentType2.default.parse(type);
+        type = __WEBPACK_IMPORTED_MODULE_0_content_type___default.a.parse(type);
       } catch (e) {
         return '';
       }
@@ -868,27 +827,19 @@ function ContentType (type) {
 
 /***/ }),
 /* 6 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.KoaResponse = undefined;
-
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return KoaResponse; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_statuses__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_statuses___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_statuses__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _statuses = __webpack_require__(7);
-
-var _statuses2 = _interopRequireDefault(_statuses);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var KoaResponse = exports.KoaResponse = function () {
+
+
+var KoaResponse = function () {
   function KoaResponse() {
     _classCallCheck(this, KoaResponse);
 
@@ -897,90 +848,82 @@ var KoaResponse = exports.KoaResponse = function () {
     this._body = null;
   }
 
-  _createClass(KoaResponse, [{
-    key: 'finalize',
-    value: function finalize() {
-      var response = new Response(this._body, {
-        status: this._status,
-        headers: this._headers
-      });
+  KoaResponse.prototype.finalize = function finalize() {
+    var response = new Response(this._body, {
+      status: this._status,
+      headers: this._headers
+    });
 
-      console.log('finalize', response);
-      return response;
-    }
-  }, {
-    key: 'redirect',
-    value: function redirect(url, alt) {
-      // location
-      if (url === 'back') url = this.ctx.get('Referrer') || alt || '/';
-      this.set('Location', url);
+    console.log('finalize', response);
+    return response;
+  };
 
-      // status
-      if (!_statuses2.default.redirect[this.status]) this.status = 302;
+  KoaResponse.prototype.redirect = function redirect(url, alt) {
+    // location
+    if (url === 'back') url = this.ctx.get('Referrer') || alt || '/';
+    this.set('Location', url);
 
-      // html
-      if (this.ctx.accepts('html')) {
-        url = escape(url);
-        this.type = 'text/html; charset=utf-8';
-        this.body = 'Redirecting to <a href="' + url + '">' + url + '</a>.';
-        return;
-      }
+    // status
+    if (!__WEBPACK_IMPORTED_MODULE_0_statuses___default.a.redirect[this.status]) this.status = 302;
 
-      // text
-      this.type = 'text/plain; charset=utf-8';
-      this.body = 'Redirecting to ' + url + '.';
+    // html
+    if (this.ctx.accepts('html')) {
+      url = escape(url);
+      this.type = 'text/html; charset=utf-8';
+      this.body = 'Redirecting to <a href="' + url + '">' + url + '</a>.';
+      return;
     }
-  }, {
-    key: 'attachment',
-    value: function attachment(filename) {
-      // if (filename) this.type = extname(filename);
-      // this.set('Content-Disposition', contentDisposition(filename));
-    }
-  }, {
-    key: 'get',
-    value: function get(field) {
-      return this.header.get(field);
-    }
-  }, {
-    key: 'set',
-    value: function set(field, val) {
-      if (arguments.length === 2) {
-        if (Array.isArray(val)) {
-          this._headers.set(field, val[0]);
-          for (var i = 1; i < val.length; i++) {
-            this._headers.append(field, val[i]);
-          }
-        } else {
-          this._headers.set(field, val);
-        }
-      } else {
-        for (var key in field) {
-          this.set(key, field[key]);
-        }
-      }
-    }
-  }, {
-    key: 'append',
-    value: function append(field, val) {
+
+    // text
+    this.type = 'text/plain; charset=utf-8';
+    this.body = 'Redirecting to ' + url + '.';
+  };
+
+  KoaResponse.prototype.attachment = function attachment(filename) {
+    // if (filename) this.type = extname(filename);
+    // this.set('Content-Disposition', contentDisposition(filename));
+  };
+
+  KoaResponse.prototype.get = function get(field) {
+    return this.header.get(field);
+  };
+
+  KoaResponse.prototype.set = function set(field, val) {
+    if (arguments.length === 2) {
       if (Array.isArray(val)) {
-        for (var i = 0; i < val.length; i++) {
+        this._headers.set(field, val[0]);
+        for (var i = 1; i < val.length; i++) {
           this._headers.append(field, val[i]);
         }
       } else {
-        this._headers.append(field, val);
+        this._headers.set(field, val);
+      }
+    } else {
+      for (var key in field) {
+        this.set(key, field[key]);
       }
     }
-  }, {
-    key: 'remove',
-    value: function remove(field) {
-      this._headers.delete(field);
+  };
+
+  KoaResponse.prototype.append = function append(field, val) {
+    if (Array.isArray(val)) {
+      for (var i = 0; i < val.length; i++) {
+        this._headers.append(field, val[i]);
+      }
+    } else {
+      this._headers.append(field, val);
     }
-  }, {
-    key: 'flushHeaders',
-    value: function flushHeaders() {
-      // do nothing
-    }
-  }, {
+  };
+
+  KoaResponse.prototype.remove = function remove(field) {
+    this._headers.delete(field);
+  };
+
+  KoaResponse.prototype.flushHeaders = function flushHeaders() {
+    // do nothing
+  };
+
+  _createClass(KoaResponse, [{
     key: 'header',
     get: function get() {
       return this._headers;
@@ -1001,7 +944,7 @@ var KoaResponse = exports.KoaResponse = function () {
   }, {
     key: 'message',
     get: function get() {
-      return this._statusMessage || _statuses2.default[this.status];
+      return this._statusMessage || __WEBPACK_IMPORTED_MODULE_0_statuses___default.a[this.status];
     },
     set: function set(msg) {
       this._statusMessage = msg;
@@ -1071,9 +1014,7 @@ var KoaResponse = exports.KoaResponse = function () {
   }]);
 
   return KoaResponse;
-}();
-
-;
+}();;
 
 /***/ }),
 /* 7 */
