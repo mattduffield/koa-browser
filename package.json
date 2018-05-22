@@ -1,6 +1,6 @@
 {
   "name": "@mattduffield/koa-browser",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "This allows you to run Koa in the browser.",
   "scripts": {
     "build": "webpack --env.build",
