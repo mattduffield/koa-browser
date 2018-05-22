@@ -1,8 +1,9 @@
 import statuses from 'statuses';
 
 export class KoaResponse {
+
   constructor() {
-    this._headers = new Headers;
+    this._headers = new Headers();
     this._status = 404;
     this._body = null;
   }
@@ -12,6 +13,7 @@ export class KoaResponse {
       status: this._status,
       headers: this._headers
     });
+
     console.log('finalize', response);
     return response;
   }
@@ -62,7 +64,7 @@ export class KoaResponse {
 
   redirect(url, alt) {
     // location
-    if ('back' == url) url = this.ctx.get('Referrer') || alt || '/';
+    if (url === 'back') url = this.ctx.get('Referrer') || alt || '/';
     this.set('Location', url);
 
     // status
@@ -82,8 +84,8 @@ export class KoaResponse {
   }
 
   attachment(filename) {
-    if (filename) this.type = extname(filename);
-    this.set('Content-Disposition', contentDisposition(filename));
+    // if (filename) this.type = extname(filename);
+    // this.set('Content-Disposition', contentDisposition(filename));
   }
 
   set type(type) {
@@ -95,13 +97,15 @@ export class KoaResponse {
   }
 
   set lastModified(val) {
-    if ('string' == typeof val) val = new Date(val);
+    if (typeof val === 'string') val = new Date(val);
     this.set('Last-Modified', val.toUTCString());
   }
 
   get lastModified() {
     const date = this.get('last-modified');
+
     if (date) return new Date(date);
+    return null;
   }
 
   set etag(val) {
@@ -115,6 +119,7 @@ export class KoaResponse {
 
   get type() {
     const type = this.get('Content-Type');
+
     if (!type) return '';
     return type.split(';')[0];
   }
@@ -124,10 +129,10 @@ export class KoaResponse {
   }
 
   set(field, val) {
-    if (2 == arguments.length) {
+    if (arguments.length === 2) {
       if (Array.isArray(val)) {
         this._headers.set(field, val[0]);
-        for (var i = 1; i < val.length; i++) {
+        for (let i = 1; i < val.length; i++) {
           this._headers.append(field, val[i]);
         }
       } else {
@@ -142,7 +147,7 @@ export class KoaResponse {
 
   append(field, val) {
     if (Array.isArray(val)) {
-      for (var i = 0; i < val.length; i++) {
+      for (let i = 0; i < val.length; i++) {
         this._headers.append(field, val[i]);
       }
     } else {

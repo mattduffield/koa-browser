@@ -13,7 +13,7 @@ export class KoaContext {
 /**
  * Response delegation.
  */
-delegate(Context.prototype, 'response')
+delegate(KoaContext.prototype, 'response')
   .method('attachment')
   .method('redirect')
   .method('remove')
@@ -34,7 +34,7 @@ delegate(Context.prototype, 'response')
 /**
  * Request delegation.
  */
-delegate(Context.prototype, 'request')
+delegate(KoaContext.prototype, 'request')
   .method('acceptsLanguages')
   .method('acceptsEncodings')
   .method('acceptsCharsets')

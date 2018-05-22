@@ -2,26 +2,39 @@
   "name": "koa-browser",
   "version": "0.0.1",
   "description": "This allows you to run Koa in the browser.",
+  "scripts": {
+    "build": "WEBPACK_ENV=build webpack",
+    "dev": "WEBPACK_ENV=dev webpack --progress --colors --watch",
+    "test": "mocha --require babel-core/register --colors ./test/*.spec.js",
+    "test:watch": "mocha --require babel-core/register --colors -w ./test/*.spec.js"
+  },
   "repository": {
     "url": "git+ssh://git@github.com/mattduffield/koa-browser.git",
     "type": "git"
   },
   "author": "Matt Duffield <matt.duffield@gmail.com> (https://frontendcreator.com/)",
   "license": "MIT",
+  "main": "dist/amd/koa-browser.js",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "eslint": "^4.13.1",
+    "eslint-loader": "^1.9.0",
+    "mocha": "^4.0.1",
     "puppeteer": "^1.1.1",
     "tape": "^4.9.0",
-    "webpack": "^4.0.1",
-    "webpack-cli": "^2.0.9"
-  },
-  "scripts": {
-    "test": "node test/run.js",
-    "build-test": "webpack"
+    "webpack": "^3.10.0",
+    "yargs": "^10.0.3"
   },
   "dependencies": {
     "content-type": "1.0.4",
     "delegates": "1.0.0",
     "koa-compose": "4.0.0",
-    "statuses": "1.4.0"    
+    "statuses": "1.4.0"
   }
 }

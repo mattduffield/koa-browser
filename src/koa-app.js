@@ -2,10 +2,11 @@ import compose from 'koa-compose';
 import {KoaContext} from './koa-context.js';
 
 export class KoaApp {
+
   constructor() {
     this.middleware = [];
-    this.contextClass = class extends KoaContext { };
-    this.ctx = this.contextClass.prototype;
+    this.ContextClass = class extends KoaContext { };
+    this.ctx = this.ContextClass.prototype;
   }
 
   use(fn) {
@@ -16,9 +17,10 @@ export class KoaApp {
     let fn = compose(this.middleware);
 
     return async (req) => {
-      let ctx = new this.contextClass(this, req);
+      let ctx = new this.ContextClass(this, req);
+
       await fn(ctx);
       return ctx.response.finalize();
-    }
+    };
   }
 }

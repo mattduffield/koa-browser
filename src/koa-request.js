@@ -35,9 +35,10 @@ export class KoaRequest {
 
   set url(val) {
     const parts = val.match(/^([^?#]*)(\?[^#]*)?(#.*)?$/);
+
     this._url.pathname = parts[1];
-    this._url.search = parts[2] || "";
-    this._url.hash = parts[3] || "";
+    this._url.search = parts[2] || '';
+    this._url.hash = parts[3] || '';
   }
 
   get href() {
@@ -54,7 +55,8 @@ export class KoaRequest {
 
   get query() {
     const qs = this.querystring;
-    var obj = this._querycache[qs];
+    let obj = this._querycache[qs];
+
     if (obj) return obj;
 
     obj = this._querycache[qs] = {};
@@ -67,10 +69,12 @@ export class KoaRequest {
 
   set query(obj) {
     const parts = [];
+
     for (const key in obj) {
       if (obj.hasOwnProperty(key)) {
         const escKey = window.encodeURIComponent(key);
         const escValue = window.encodeURIComponent(obj[key]);
+
         parts.push(`${escKey}=${escValue}`);
       }
     }
@@ -90,11 +94,11 @@ export class KoaRequest {
     const s = this.ctx.status;
 
     // GET or HEAD for weak freshness validation only
-    if ('GET' != method && 'HEAD' != method) return false;
+    if (method !== 'GET' && method !== 'HEAD') return false;
 
     // 2xx or 304 as per rfc2616 14.26
-    if ((s >= 200 && s < 300) || 304 == s) {
-      return fresh(this.header, this.ctx.response.header);
+    if ((s >= 200 && s < 300) || s === 304) {
+      return this.fresh(this.header, this.ctx.response.header);
     }
 
     return false;
@@ -106,11 +110,13 @@ export class KoaRequest {
 
   get idempotent() {
     const methods = ['GET', 'HEAD', 'PUT', 'DELETE', 'OPTIONS', 'TRACE'];
+
     return !!~methods.indexOf(this.method);
   }
 
   get charset() {
     let type = this.get('Content-Type');
+
     if (!type) return '';
 
     try {
@@ -124,7 +130,8 @@ export class KoaRequest {
 
   get length() {
     const len = this.get('Content-Length');
-    if (len == '') return;
+
+    if (len === '') return 0;
     return ~~len;
   }
 
@@ -133,7 +140,7 @@ export class KoaRequest {
   }
 
   get secure() {
-    return 'https' == this.protocol;
+    return this.protocol === 'https';
   }
 
   get ips() {
@@ -146,12 +153,14 @@ export class KoaRequest {
 
   get type() {
     const type = this.get('Content-Type');
+
     if (!type) return '';
     return type.split(';')[0];
   }
 
   get(field) {
     const headers = this._headers;
+
     switch (field = field.toLowerCase()) {
       case 'referrer':
         return headers.get('referer');
@@ -165,18 +174,18 @@ function delegateToUrl(name, target) {
   if (!target) target = name;
 
   Object.defineProperty(KoaRequest.prototype, name, {
-    get: function() {
+    get: function () {
       return this._url[target];
     },
-    set: function(val) {
+    set: function (val) {
       this._url[target] = val;
     }
-  })
+  });
 }
 
-delegateToUrl("origin")
-delegateToUrl("path", "pathname")
-delegateToUrl("search")
-delegateToUrl("host")
-delegateToUrl("hostname")
-delegateToUrl("protocolWithColon", "protocol")
+delegateToUrl('origin');
+delegateToUrl('path', 'pathname');
+delegateToUrl('search');
+delegateToUrl('host');
+delegateToUrl('hostname');
+delegateToUrl('protocolWithColon', 'protocol');
